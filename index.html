@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1>Received Message:</h1>
-    <div id="messageDisplay" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+    <div id="messageDisplay" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap;">
       No message received yet.
     </div>
 
@@ -25,10 +25,12 @@
     
       window.addEventListener('message', (event) => {
         console.log('Received message:', event.data);
+
+        // Parse the message content if it's an object and stringify it with formatting
         if (typeof event.data === 'object') {
-          messageDisplay.textContent = JSON.stringify(event.data, null, 2);
+          messageDisplay.textContent = JSON.stringify(event.data, null, 2); // Add formatting
         } else {
-          messageDisplay.textContent = event.data;
+          messageDisplay.textContent = event.data; // Directly display strings or other primitive types
         }
       });
     </script>
