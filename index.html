@@ -25,6 +25,11 @@
     
       window.addEventListener('message', (event) => {
         console.log('Received message:', event.data);
+        if (typeof event.data === 'object') {
+          messageDisplay.textContent = JSON.stringify(event.data, null, 2);
+        } else {
+          messageDisplay.textContent = event.data;
+        }
         messageDisplay.textContent = event.data;
       });
     </script>
